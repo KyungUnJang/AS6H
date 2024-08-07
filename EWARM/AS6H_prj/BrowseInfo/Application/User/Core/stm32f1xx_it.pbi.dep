@@ -51,5 +51,10 @@ C:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_it
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdlib.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product_stdlib.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\signal.h \
+  C:\pjt_not\AS6H_prj\EWARM\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\task.h \
-  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\define.h
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\define.h \
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\hw_config.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\math.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_float_setup.h \
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\hw_config.h

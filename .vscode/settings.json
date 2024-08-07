@@ -1,6 +1,13 @@
 {
     "files.associations": {
         "task.h": "c",
-        "define.h": "c"
+        "define.h": "c",
+        "hw_config.h": "c",
+        "def.h": "c",
+        "stdio.h": "c",
+        "stdint.h": "c",
+        "keyscan.h": "c",
+        "bsp_can.h": "c",
+        "motor.h": "c"
     }
 }

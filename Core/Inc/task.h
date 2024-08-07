@@ -2,11 +2,11 @@
 #define __BSP_TASK_H
 
 #include "define.h"
-
+#include "hw_config.h"
 extern uint32_t ms_cnt;
-extern uint16_t uTimerFlag;
+
 extern uint8_t INIT_FLAG;
-extern uint8_t CAN_RxData[4];
+extern uint8_t CAN_RxData[8];
 extern void Timer_Event();
 
 typedef struct 

@@ -30,12 +30,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "keyscan.h"
+#include "bsp_can.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+uint8_t temp = 0;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -103,7 +104,13 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT (&htim3); // 1ms 
+  for(temp = 0; temp < 10; temp++)
+  {
+  	can1_Trans8b(CAN_DRV);
+	  can1_Trans8b(CAN_STR);
+  	HAL_Delay(30);
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,8 +118,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
+    Timer_Event();
+    User_Interface();
+    Motor_Control();
   }
   /* USER CODE END 3 */
 }

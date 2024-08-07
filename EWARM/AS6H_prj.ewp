@@ -1081,6 +1081,9 @@
                     <name>$PROJ_DIR$\..\Core\Src\adc.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Core\Src\bsp_can.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Core\Src\can.c</name>
                 </file>
                 <file>
@@ -1093,10 +1096,19 @@
                     <name>$PROJ_DIR$\..\Core\Src\gpio.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Core\Src\hw_config.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Core\Src\i2c.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Core\Src\keyscan.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Core\Src\main.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Src\motor.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Core\Src\stm32f1xx_hal_msp.c</name>

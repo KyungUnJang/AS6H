@@ -5,6 +5,7 @@
 
 #include "main.h"
 #include "def.h"
+#include "stm32f103xe.h"
 
 
 
@@ -21,6 +22,10 @@
 #define C_AQUA "\033[36m"
 #define C_END  "\033[0m"
 
+
+#define CAN_MCU		0
+#define CAN_STR 	1
+#define CAN_DRV 	2
 
 
 
@@ -264,11 +269,11 @@
 #if 0
 	97	PE0 	OUT_PORT	LED R
 	98	PE1 	OUT_PORT	LED G
-	1	PE2 	IN_PORT 	LK_E(emergency) 	CON-03,  15��(��� ����)
-	2	PE3 	IN_PORT 	LK_F(forward)		CON-03,  17�� 
-	3	PE4 	IN_PORT 	LK_B(backward)		CON-03,  20�� 
-	4	PE5 	IN_PORT 	LK_L(left)			CON-03,  19�� 
-	5	PE6 	IN_PORT 	LK_R(right) 		CON-03,  22�� 
+	1	PE2 	IN_PORT 	LK_E(emergency) 	
+	2	PE3 	IN_PORT 	LK_F(forward)		
+	3	PE4 	IN_PORT 	LK_B(backward)		
+	4	PE5 	IN_PORT 	LK_L(left)			
+	5	PE6 	IN_PORT 	LK_R(right) 		
 	38	PE7 	
 	39	PE8 	OUT_PORT	STR_BREAK(Ready)	
 	40	PE9 	OUT_PORT	STR_C/CCW			CON-01,   9�� 
@@ -279,13 +284,13 @@
 	45	PE14	IN_PORT 	�л�SPEED OPTION	CON-01,  16�� 
 	46	PE15	IN_PORT 	���ι��� OPTION 	CON-01,  14��			
 #endif
-#define E_LED_R   			GPIO_PIN_0
-#define E_LED_G   			GPIO_PIN_1
-#define E_KEY_EMERGENCY		GPIO_PIN_2
-#define E_KEY_FORWARD		GPIO_PIN_3
-#define E_KEY_BACKWORD		GPIO_PIN_4
-#define E_KEY_LEFT			GPIO_PIN_5
-#define E_KEY_RIGHT			GPIO_PIN_6
+#define DBG_LED_R  			GPIO_PIN_0
+#define DBG_LED_G  			GPIO_PIN_1
+#define ST_KEY_TEMP 		GPIO_PIN_2
+#define ST_KEY_FORWARD		GPIO_PIN_3
+#define ST_KEY_BACKWORD		GPIO_PIN_4
+#define ST_KEY_LEFT			GPIO_PIN_5
+#define ST_KEY_RIGHT		GPIO_PIN_6
 
 #define E_strM_BREAK		GPIO_PIN_8
 #define E_strM_CWCCW		GPIO_PIN_9
@@ -340,41 +345,40 @@
 #define TIM_1SecMaker		(1 << 8)
 
 
-/* uSysStatusFlag f_LimitLeft */
-#define f_DMotorACT  		(1 << 0)	/* ���� Motor ���� ��  */
-#define f_DMForward 		(1 << 1)	/* ���� Motor CWCCW */
-#define f_DMBreak			(1 << 2)	/* ���� Motor Break */
-#define f_SMotorACT			(1 << 3)	/* ���� Motor ���� ��  */
-#define f_SMLeft       		(1 << 4)
-#define f_PumpACT			(1 << 5)	/* PUMP */ // ACK 값으로 변경 
-#define f_FanACT     		(1 << 6)	/* FAN */ // 중간시작 요청으로 변경
+
+/* u2SysStatusF f_ENGrunEXTout */
+#define f_LimitCenter		(1 << 0)	/* 1 = ���� ����  */
+#define f_LimitLeft			(1 << 1)	/* 1 = �� Limit ����  */
+#define f_LimitRight		(1 << 2)	/* 1 = �� Limit ����  */
+#define f_ALLWLEmpty		(1 << 3)	/* 1 = �������� ������   */
+#define f_LowBat			(1 << 4)	/* 1 = Battery V. Low 35V ���� */
+#define f_Crash				(1 << 5)	/* 1 = �浹 ���� ����  */
+#define f_RFR_Emergency		(1 << 6)	/* 1 = RFR ���� ����  */
 #define f_AutoRun			(1 << 7)	/* 1 = �������� Req. */
-
-#define f_LimitCenter		(1 << 8)	/* 1 = ���� ����  */
-#define f_LimitLeft			(1 << 9)	/* 1 = �� Limit ����  */
-#define f_LimitRight		(1 << 10)	/* 1 = �� Limit ����  */
-#define f_ALLWLEmpty		(1 << 11)	/* 1 = �������� ������   */
-#define f_LowBat			(1 << 12)	/* 1 = Battery V. Low 35V ���� */
-#define f_Crash				(1 << 13)	/* 1 = �浹 ���� ����  */
-#define f_RFR_Emergency		(1 << 14)	/* 1 = RFR ���� ����  */
-#define f_TraceLine			(1 << 15)	/* 1 = Line ��ȣ ���� */
 //
-#define f_OPT_Pumpspeed		(1 << 16)	/* 1 = ���� ���� ��   */
-#define f_OPT_AutodrvSPD	(1 << 17)	/* 1 = ���� ���� ��   */
-#define f_WLEmpty1			(1 << 18)	/* 1 = �������� ������ ����  */
-#define f_WLEmpty2			(1 << 19)	/* 1 = �������� ������ ��ü  */
-#define f_WTEmptBuzReq		(1 << 20)
-#define f_LKATKInitStatus	(1 << 21)
-#define a_NotCondition		(1 << 22)
-#define a_Auto_Ready		(1 << 23)
+#define f_EnginRuning     	(1 << 8)	/* Engin Running */
+#define f_PumpACT			(1 << 9)	/* PUMP */
+#define f_FanACT     		(1 << 10)	/* FAN */
+#define f_DMotorACT  		(1 << 11)	/* ���� Motor ���� ��  */
+#define f_SMotorACT			(1 << 12)	/* ���� Motor ���� ��  */
+#define f_Heartbeat			(1 << 13)	/* Can ���۽� 1/0 Toggle �ؼ� ���� */
+#define f_RTKRdy			(1 << 14)	/* Ready .. */
+#define f_TraceLine			(1 << 15)	/* 1 = RTK ��ȣ ���� */
+//
+#define f_DMForward 		(1 << 16)	/* ���� Motor CWCCW */
+#define f_DMBreak			(1 << 17)	/* ���� Motor Break */
+#define f_SMLeft       		(1 << 18)
+#define f_WLEmpty1			(1 << 19)	/* 1 = �������� ������ ����  */
+#define f_WLEmpty2			(1 << 20)	/* 1 = �������� ������ ��ü  */
+#define f_WTEmptBuzReq		(1 << 21)
+#define f_CenterAlignment	(1 << 23)	/* 1 = Init Center Alignment Req. */
+//
+#define f_CarFanSel			(1 << 24)	/* 1 = FAN On, 0 = FAN Off */
+#define f_CarAutoSel		(1 << 25)	/* 1 = Auto On, 0 = Auto Off */
 
-
-#define f_PumpOn			(1 << 24)
-#define f_FanOn				(1 << 25)
-#define f_smartConnected	(1 << 26)
-#define f_Pump1st			(1 << 27)
-#define f_ADRVnoWaterStop	(1 << 28)	/* ���������� No Water Stop  nck-1214 */
-#define f_ADRVnoCANData		(1 << 29)	/* When ���������� No CAN Data,  Stop  nck-1222 */
+#define f_ADRVnoWaterStop	(1 << 26)	/* ���������� No Water Stop  nck-1214 */
+#define f_ADRVnoCANData		(1 << 27)	/* When ���������� No CAN Data,  Stop  nck-1222 */
+#define f_ENGrunEXTout		(1 << 28)	/* ����, ������� ���� ������ 1000 RPM �̸��� �Ǹ� 1 */
 
 
 /* uKeyStatusFlag  */
@@ -410,9 +414,11 @@
 #define f_canERIn			(1 << 2)
 #define f_uart1DTIn			(1 << 3)
 
-#define f_U2CSumErr			(1 << 8)
-#define f_U2DEErr			(1 << 9)
-#define f_U2INTNon			(1 << 10)
+#define f_canSTR707In		(1 << 8)	/* STR Driver 0x707 */
+#define f_canDRV160In		(1 << 9)	/* DRV Driver 0x160 */
+#define f_canRTK223In		(1 << 10)	/* RTK Module 0x223 */
+#define f_canDBG747In		(1 << 11)	/* Debug Command */
+#define f_canMUF757In		(1 << 12)	/* ����  Command */
 
 
 #if 1
