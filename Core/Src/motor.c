@@ -1,11 +1,13 @@
-#include "hw_config.h"
+
 #include "motor.h"
 #include "bsp_can.h"
 uint8_t rAutoMax_Speed = 0;
 uint8_t rAutoMax_SpeedBk = 0;
 
 
-
+uint16_t uSTR_PWM;		
+uint16_t uDRV_RPM;
+uint8_t rDRV_DIR;
 
 
 const unsigned int DRV_SPD[6] = {

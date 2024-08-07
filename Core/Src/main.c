@@ -32,6 +32,7 @@
 /* USER CODE BEGIN Includes */
 #include "keyscan.h"
 #include "bsp_can.h"
+#include "motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

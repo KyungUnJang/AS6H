@@ -32,9 +32,6 @@ extern uint32_t u32_SysRunTime;
 extern uint32_t u32can_TrnCnt;
 extern uint32_t CAN_RcvCount;
 extern uint32_t Received_canID;
-extern uint16_t uSTR_PWM;		
-extern uint16_t uDRV_RPM;
-extern uint8_t rDRV_DIR;
 
 extern uint16_t uTimerFlag;
 extern uint16_t	uCommStatusFlag; 

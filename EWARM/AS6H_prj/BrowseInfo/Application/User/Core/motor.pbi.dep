@@ -1,5 +1,6 @@
 C:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\motor.pbi: \
   C:\pjt_not\AS6H_prj\Core\Src\motor.c \
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\motor.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\hw_config.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\main.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
@@ -53,7 +54,5 @@ C:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\motor.pbi: \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product_stdlib.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\signal.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h \
-  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\motor.h \
-  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\hw_config.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\bsp_can.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\task.h
