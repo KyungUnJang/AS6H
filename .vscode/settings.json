@@ -8,6 +8,7 @@
         "stdint.h": "c",
         "keyscan.h": "c",
         "bsp_can.h": "c",
-        "motor.h": "c"
+        "motor.h": "c",
+        "bsp_adc.h": "c"
     }
 }

@@ -31,6 +31,8 @@ CAN_RxHeaderTypeDef rxHeader;
 #include "define.h"
 #include "task.h"
 #include "hw_config.h"
+#include "keyscan.h"
+#include "motor.h"
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -66,6 +68,7 @@ extern TIM_HandleTypeDef htim3;
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
+uint16_t key_buff[2];
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -273,31 +276,61 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 
     if((rxHeader.StdId == 0x123)&&(rxHeader.DLC == 2))
     {
-      #if 0 
+       
+      #if 0
       CAN_RxData[0] = CanRxData.Data[0];	
       CAN_RxData[1] = CanRxData.Data[1];	
+      uCommStatusFlag |= f_canDTIn;
 
+      
       Received_canID = rxHeader.StdId;
       Received_canIDType = rxHeader.IDE;
       Received_canDLC = rxHeader.DLC;
       ++CAN_RcvCount;
       //
       canDTIntime = 2000; 		/* nck-1222 */
-      uCommStatusFlag |= f_canDTIn;
+      
       #endif 
 
 
     }
   }
-
-
-  
-
+ 
   if((rxHeader.ExtId == 0x100)&&(rxHeader.IDE == CAN_ID_EXT)&&(rxHeader.DLC == 8))
 	{
-		CAN_RxData[4] = CanRxData.Data[4];	
-		CAN_RxData[6] = CanRxData.Data[6];	
+    #if 0
+		CAN_RxData[0] = CanRxData.Data[4];	
+		CAN_RxData[1] = CanRxData.Data[6];	
+    #endif 
+    if ( CanRxData.Data[3] < 30 )
+    {
+      Drv_spd = 0;
+    }
+    else if ( CanRxData.Data[3] >=30 && CanRxData.Data[3] < 80)
+    {
+      Drv_spd = 1;
+    }
+    else if ( CanRxData.Data[3] >=80 && CanRxData.Data[3] < 120)
+    {
+      Drv_spd = 2;
+    }
+     else if ( CanRxData.Data[3] >=120 && CanRxData.Data[3] < 160)
+    {
+      Drv_spd = 3;
+    }
+    else if ( CanRxData.Data[3] >=160 && CanRxData.Data[3] < 220)
+    {
+      Drv_spd = 4;
+    }
+    else 
+    {
+      Drv_spd = 5;
+    }
 
+
+    key_buff[0] = CanRxData.Data[4];
+    key_buff[1] = CanRxData.Data[6] <<8;
+    R_KeyBuff = key_buff[0] | key_buff[1];
 		Received_canID = rxHeader.StdId;
 		Received_canIDType = rxHeader.IDE;
 		Received_canDLC = rxHeader.DLC;
@@ -354,7 +387,18 @@ void TIM3_IRQHandler(void)
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
-
+  
+	if (Local_Key.lK_ChatCnt)
+		--Local_Key.lK_ChatCnt;
+	if (RFR_Key.rK_ChatCnt)
+		--RFR_Key.rK_ChatCnt;
+	if (DMotorWaitime)
+		--DMotorWaitime;
+	if (SMotorWaitime)
+		--SMotorWaitime;
+  if (RFR_Key.rK_ChatCnt)
+		--RFR_Key.rK_ChatCnt;
+	
   /* USER CODE END TIM3_IRQn 1 */
 }
 

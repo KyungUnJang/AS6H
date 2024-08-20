@@ -3,8 +3,9 @@
 
 #include "define.h"
 #include "hw_config.h"
-extern uint32_t ms_cnt;
 
+extern uint32_t ms_cnt;
+extern uint16_t angle_value;
 extern uint8_t INIT_FLAG;
 extern uint8_t CAN_RxData[8];
 extern void Timer_Event();

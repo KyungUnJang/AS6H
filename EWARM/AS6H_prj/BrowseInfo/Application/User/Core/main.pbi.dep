@@ -65,4 +65,5 @@ C:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\main.pbi: \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\keyscan.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\bsp_can.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\task.h \
-  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\motor.h
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\motor.h \
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\bsp_adc.h

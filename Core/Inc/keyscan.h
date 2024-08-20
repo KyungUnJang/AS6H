@@ -4,7 +4,7 @@
 
 #include "define.h"
 #include "hw_config.h"
-
+extern uint16_t R_KeyBuff;
 extern void User_Interface();
 
 #endif 

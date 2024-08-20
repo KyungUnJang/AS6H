@@ -1,50 +1,52 @@
 #include "keyscan.h"
-
+uint16_t  R_KeyBuff = 0;
 void Lkey_Action();
 uint8_t Key_IdentChk(uint16_t In_LocalKey);
 uint8_t isAutoCondition();
 uint8_t is_NotUrgency();
 void DRV_Start();
 void STR_Start();
-
+void Drive_REQ(uint8_t Control);
+void Rkey_Action();	/* 무선리모컨  */
+uint16_t L_KeyBuff;
 void LKEY_Check()		/* STIICK 4 Key */
 {
-	  uint16_t L_KeyBuff;
-	  L_KeyBuff = (GPIOE->IDR >> 3) & 0x000F;
-	  if(L_KeyBuff != 0 && Key_IdentChk(L_KeyBuff)) 	/* 동시 Key 처리 --> 막는다. */
-	  {
-		Local_Key.lK_Data = L_KeyBuff;
-		if(Local_Key.lK_Data == Local_Key.lK_Back)
-		{
-			if(Local_Key.lK_ChatCnt == 0)
-			{
-				uKeyStatusFlag |= fLK_Ok;
-				uKeyStatusFlag &= ~fLK_Repeat;
-				if(Local_Key.lK_Data == Local_Key.lK_Last)
-					uKeyStatusFlag |= fLK_Repeat;
-				Local_Key.lK_Last = Local_Key.lK_Data;
-				Local_Key.lK_ChatCnt = 30;		/* 매 30ms 마다 */
-				RK_PermitTime = 3000/30;		/* 3초 뒤 R Key Check */
-                Lkey_Action();					
-			}
-		} 
-		else 
-		{
-			Local_Key.lK_Back = Local_Key.lK_Data;
-			Local_Key.lK_ChatCnt = 60;
-			uKeyStatusFlag &= ~fLK_Ok;
-			uKeyStatusFlag &= ~fLK_Repeat;
-		}
-	  }
-	  else
-	  {
-		uKeyStatusFlag &= ~fLK_Ok;
-		uKeyStatusFlag &= ~fLK_Repeat;
-		Local_Key.lK_Data = 0;
-		Local_Key.lK_Back = 0;
-		Local_Key.lK_Last = 0;
-		Local_Key.lK_ChatCnt = 60;
-	  }
+    
+    L_KeyBuff = ~(GPIOE->IDR >> 3) & 0x000F;
+    if(L_KeyBuff != 0 && Key_IdentChk(L_KeyBuff)) 	/* 동시 Key 처리 --> 막는다. */
+    {
+    Local_Key.lK_Data = L_KeyBuff;
+    if(Local_Key.lK_Data == Local_Key.lK_Back)
+    {
+        if(Local_Key.lK_ChatCnt == 0)
+        {
+            uKeyStatusFlag |= fLK_Ok;
+            uKeyStatusFlag &= ~fLK_Repeat;
+            if(Local_Key.lK_Data == Local_Key.lK_Last)
+                uKeyStatusFlag |= fLK_Repeat;
+            Local_Key.lK_Last = Local_Key.lK_Data;
+            Local_Key.lK_ChatCnt = 30;		/* 매 30ms 마다 */
+            RK_PermitTime = 3000/30;		/* 3초 뒤 R Key Check */
+            Lkey_Action();					
+        }
+    } 
+    else 
+    {
+        Local_Key.lK_Back = Local_Key.lK_Data;
+        Local_Key.lK_ChatCnt = 60;
+        uKeyStatusFlag &= ~fLK_Ok;
+        uKeyStatusFlag &= ~fLK_Repeat;
+    }
+    }
+    else
+    {
+    uKeyStatusFlag &= ~fLK_Ok;
+    uKeyStatusFlag &= ~fLK_Repeat;
+    Local_Key.lK_Data = 0;
+    Local_Key.lK_Back = 0;
+    Local_Key.lK_Last = 0;
+    Local_Key.lK_ChatCnt = 60;
+    }
 }
 void Lkey_Action()
 {
@@ -55,7 +57,7 @@ void Lkey_Action()
         {
             uKeyStatusFlag |= flk_Forward;
             uKeyStatusFlag &= ~flk_Backward;
-            //Drive_REQ(KEY_FORWARD);
+            Drive_REQ(KEY_FORWARD);
         }
     }
     else if((Local_Key.lK_Last & KEY_BACKWORD)  == KEY_BACKWORD)
@@ -64,7 +66,7 @@ void Lkey_Action()
         {
             uKeyStatusFlag &= ~flk_Forward;
             uKeyStatusFlag |= flk_Backward;
-            //Drive_REQ(KEY_BACKWORD);
+            Drive_REQ(KEY_BACKWORD);
         }	
     }
     else
@@ -78,7 +80,7 @@ void Lkey_Action()
         {
             uKeyStatusFlag |= flk_Left;
             uKeyStatusFlag &= ~flk_Right;
-            //Drive_REQ(KEY_LEFT);
+            Drive_REQ(KEY_LEFT);
         }	
         
     }
@@ -88,7 +90,7 @@ void Lkey_Action()
         {
             uKeyStatusFlag &= ~flk_Left;
             uKeyStatusFlag |= flk_Right;
-            //Drive_REQ(KEY_RIGHT);
+            Drive_REQ(KEY_RIGHT);
         }
     }
     else
@@ -96,6 +98,125 @@ void Lkey_Action()
         uKeyStatusFlag &= ~flk_Left;
         uKeyStatusFlag &= ~flk_Right;
     }
+}
+
+
+void RKEY_Check()
+{
+    #if 1 
+    #if 0 
+    PC_rKey = (GPIOC->IDR & 0xF000) >> 12;
+    PD_rKey = (GPIOD->IDR & 0x001F) << 4;
+    R_KeyBuff = PC_rKey | PD_rKey;
+    R_KeyBuff &= 0x01FF;
+    #endif 
+    //R_KeyBuff = CAN_RxData[0];
+    
+    if(R_KeyBuff & 0xFFFF)		/* RFR_MAIN 제외  */
+    {
+        RFR_Key.rK_Data = R_KeyBuff;
+            
+        if(RFR_Key.rK_Data == RFR_Key.rK_Back)
+        {
+            if(RFR_Key.rK_ChatCnt == 0)
+            {
+                /* uKeyStatusFlag fLK_Ok */
+                uKeyStatusFlag |= fRK_Ok;
+                uKeyStatusFlag &= ~fRK_Repeat;
+                if(RFR_Key.rK_Data == RFR_Key.rK_Last)
+                    uKeyStatusFlag |= fRK_Repeat;
+                //		
+                RFR_Key.rK_Last = RFR_Key.rK_Data;
+                RFR_Key.rK_Back = RFR_Key.rK_Data;
+                RFR_Key.rK_ChatCnt = 100;			/* 연속키 처리 타임  매 10ms 마다 */
+                Rkey_Action();
+                #if 0 
+                if(((RFR_Key.rK_Last & RFR_PUMP) == RFR_PUMP) || ((RFR_Key.rK_Last & RFR_FANONUP) == RFR_FANONUP) || ((RFR_Key.rK_Last & RFR_ATDRV) == RFR_ATDRV) || ((RFR_Key.rK_Last & RFR_FANOFF) == RFR_FANOFF)) 
+                {
+                    if((uKeyStatusFlag & fRK_Repeat) == 0)
+                        Rkey_Action();
+                    
+                }
+                else
+                {
+                    Rkey_Action();
+                }
+                #endif 
+            }
+        } 
+        else 
+        {
+            RFR_Key.rK_Back = RFR_Key.rK_Data;
+            RFR_Key.rK_ChatCnt = 100;
+            uKeyStatusFlag &= ~fRK_Ok;
+            uKeyStatusFlag &= ~fRK_Repeat;
+        }
+    }
+    else
+    {
+        uKeyStatusFlag &= ~fRK_Ok;
+        uKeyStatusFlag &= ~fRK_Repeat;
+        RFR_Key.rK_Data = 0;
+        RFR_Key.rK_Back = 0;
+        RFR_Key.rK_Last = 0;
+        RFR_Key.rK_ChatCnt = 100;
+    }
+    #endif
+}
+
+
+void Rkey_Action()	/* 무선리모컨  */
+{
+  
+  if((RFR_Key.rK_Last & RFR_FORWARD)  == RFR_FORWARD)			/* 0x20 */
+  {
+	if(isAutoCondition() == 0)
+	{
+		uKeyStatusFlag |= frk_Forward;
+		uKeyStatusFlag &= ~frk_Backward;
+		Drive_REQ(KEY_FORWARD);
+	}
+  }
+  else if((RFR_Key.rK_Last & RFR_BACKWORD)  == RFR_BACKWORD)	/* 0x01 */
+  {
+	if(isAutoCondition() == 0)
+	{
+		uKeyStatusFlag |= frk_Backward;
+		uKeyStatusFlag &= ~frk_Forward;
+		Drive_REQ(KEY_BACKWORD); 
+	}
+  }
+  else
+  {
+	uKeyStatusFlag &= ~frk_Forward;
+	uKeyStatusFlag &= ~frk_Backward;
+  }
+  //
+  if((RFR_Key.rK_Last & RFR_LEFT)  == RFR_LEFT)				/* 0x02 */
+  {
+	if(isAutoCondition() == 0)
+	{
+		uKeyStatusFlag |= frk_Left;
+		uKeyStatusFlag &= ~frk_Right;
+		Drive_REQ(KEY_LEFT); 
+	}
+  }
+  else if((RFR_Key.rK_Last & RFR_RIGHT)  == RFR_RIGHT)		/* 0x04 */
+  {
+	if(isAutoCondition() == 0)
+	{
+		uKeyStatusFlag |= frk_Right;
+		uKeyStatusFlag &= ~frk_Left;
+		Drive_REQ(KEY_RIGHT); 
+	}
+  }
+  else
+  {
+	uKeyStatusFlag &= ~frk_Left;
+	uKeyStatusFlag &= ~frk_Right;
+  }
+  
+
 }
 
 uint8_t Key_IdentChk(uint16_t In_LocalKey) /*동시 Key 블럭*/
@@ -122,7 +243,7 @@ void User_Interface()
 {
  //Port_ReadACT();
   LKEY_Check();		/* Low BAT. 상태에서도 Local Key 는 동작 한다. */
-  
+  RKEY_Check();
     #if 0 
     if((uSysStatusFlag & f_LowBat) == 0)
     {

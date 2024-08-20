@@ -33,6 +33,8 @@
 #include "keyscan.h"
 #include "bsp_can.h"
 #include "motor.h"
+#include "adc.h"
+#include "bsp_adc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,23 +99,29 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_ADC1_Init();
   MX_CAN_Init();
   MX_USART3_UART_Init();
   MX_I2C1_Init();
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  MX_ADC1_Init();
+  bsp_can_init();
+
+      
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (&htim3); // 1ms 
+  #if 0 
   for(temp = 0; temp < 10; temp++)
   {
   	can1_Trans8b(CAN_DRV);
 	  can1_Trans8b(CAN_STR);
   	HAL_Delay(30);
   }
+  #endif
+  
   /* USER CODE END 2 */
-
+  //bsp_adc_init();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)

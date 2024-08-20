@@ -26,6 +26,7 @@
 #define CAN_MCU		0
 #define CAN_STR 	1
 #define CAN_DRV 	2
+#define CAN_CRABLE  3
 
 
 
@@ -518,13 +519,13 @@
 #define KEY_FANOFF		0x80
 
 #define RFR_NONE		0
-#define RFR_FORWARD		0x01		
+#define RFR_FORWARD		0x100		
 #define RFR_ATDRV		0x02		
 #define RFR_FANONUP		0x04		
 #define RFR_FANOFF		0x08	
-#define RFR_BACKWORD	0x10
-#define RFR_LEFT		0x20
-#define RFR_RIGHT		0x40
+#define RFR_BACKWORD	0x200
+#define RFR_LEFT		0x01
+#define RFR_RIGHT		0x02
 #define RFR_PUMP 		0x80
 #define RFR_EMERGENCY	0x100
 
@@ -545,6 +546,7 @@
 #define CAN_FRONT_REQ 0x01
 #define CAN_BACK_REQ 0x02
 //
+
 
 
 

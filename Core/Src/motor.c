@@ -5,13 +5,13 @@ uint8_t rAutoMax_Speed = 0;
 uint8_t rAutoMax_SpeedBk = 0;
 
 
-uint16_t uSTR_PWM;		
+uint16_t uSTR_PWM = 0;		
 uint16_t uDRV_RPM;
 uint8_t rDRV_DIR;
-
+uint8_t Drv_spd = 1;
 
 const unsigned int DRV_SPD[6] = {
-	0,800,1200,2000,2500,3000,
+	500,900,1400,2000,2500,3000,
 };
 
 
@@ -52,7 +52,7 @@ void DRV_Control()
 	case DMOTOR_START:
 		if(DMotorWaitime == 0)
 		{
-			uDRV_RPM = DRV_SPD[DRV_Speed];
+			uDRV_RPM = DRV_SPD[Drv_spd];
 #if _DRV_REVERSE			
 			if(u2SysStatusF & f_DMForward)
 				rDRV_DIR = 0x02;	/* 0x00: Nutral, 0x01: Forward, 0x02: Reverse */				
@@ -147,7 +147,7 @@ void all_MotorStop()
     DM_Stop();		/* DRV Motor Stop */
     SM_Stop();		/* STR Motor Stop */
 
-    LKAUTOSeq = 0;
+
     
 }
 

@@ -53,4 +53,7 @@ C:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\task.pbi: \
   C:\pjt_not\AS6H_prj\EWARM\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h \
   C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\hw_config.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\math.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_float_setup.h
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_float_setup.h \
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\bsp_can.h \
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\task.h \
+  C:\pjt_not\AS6H_prj\EWARM\..\Core\Inc\bsp_adc.h
