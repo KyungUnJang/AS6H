@@ -29,6 +29,11 @@ build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.x
   flags = C$:\pjt_not\AS6H_prj\Core\Src\adc.c -D USE_HAL_DRIVER -D STM32F103xE -o C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\Obj\Application\User\Core --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I C$:\pjt_not\AS6H_prj\EWARM/../Core/Inc\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/CMSIS/Include\ -Ohz --predef_macros C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.tmp
   rspfile_name = C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.xcl.rsp
 
+build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.xcl : COMPILER_XCL 
+  xclcommand = -source_file C$:\pjt_not\AS6H_prj\Core\Src\bsp_adc.c -xcl_file C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.xcl -macro_file C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = C$:\pjt_not\AS6H_prj\Core\Src\bsp_adc.c -D USE_HAL_DRIVER -D STM32F103xE -o C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\Obj\Application\User\Core --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I C$:\pjt_not\AS6H_prj\EWARM/../Core/Inc\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/CMSIS/Include\ -Ohz --predef_macros C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.tmp
+  rspfile_name = C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.xcl.rsp
+
 build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.xcl : COMPILER_XCL 
   xclcommand = -source_file C$:\pjt_not\AS6H_prj\Core\Src\bsp_can.c -xcl_file C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.xcl -macro_file C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
   flags = C$:\pjt_not\AS6H_prj\Core\Src\bsp_can.c -D USE_HAL_DRIVER -D STM32F103xE -o C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\Obj\Application\User\Core --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Full.h" -I C$:\pjt_not\AS6H_prj\EWARM/../Core/Inc\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include\ -I C$:\pjt_not\AS6H_prj\EWARM/../Drivers/CMSIS/Include\ -Ohz --predef_macros C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.tmp
@@ -203,6 +208,10 @@ build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.p
 C$:\pjt_not\AS6H_prj\Core\Src\adc.c
   flags = -out=C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.pbi -f C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.xcl
 
+build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.pbi : INDEXER C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.xcl |  $
+C$:\pjt_not\AS6H_prj\Core\Src\bsp_adc.c
+  flags = -out=C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.pbi -f C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.xcl
+
 build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.pbi : INDEXER C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.xcl |  $
 C$:\pjt_not\AS6H_prj\Core\Src\bsp_can.c
   flags = -out=C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.pbi -f C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.xcl
@@ -343,51 +352,52 @@ build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj.pbw : MAKEBROWSE C
   flags = C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj.pbd -output C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj.pbw
 
 build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part0.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.pbi |  $
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\can.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\debug.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\dma.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\gpio.pbi
-  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part0.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\can.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\debug.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\dma.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\gpio.pbi
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\dma.pbi
+  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part0.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\adc.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_adc.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\bsp_can.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\can.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\debug.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\dma.pbi
 
-build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part1.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\hw_config.pbi |  $
+build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part1.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\gpio.pbi |  $
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\hw_config.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\i2c.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\keyscan.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\main.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\motor.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_hal_msp.pbi
-  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part1.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\hw_config.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\i2c.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\keyscan.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\main.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\motor.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_hal_msp.pbi
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\motor.pbi
+  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part1.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\gpio.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\hw_config.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\i2c.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\keyscan.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\main.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\motor.pbi
 
-build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part2.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_it.pbi |  $
+build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part2.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_hal_msp.pbi |  $
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_it.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\task.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\tim.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\usart.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\CMSIS\system_stm32f1xx.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal.pbi
-  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part2.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_it.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\task.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\tim.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\usart.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\CMSIS\system_stm32f1xx.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal.pbi
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\CMSIS\system_stm32f1xx.pbi
+  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part2.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_hal_msp.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\stm32f1xx_it.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\task.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\tim.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Application\User\Core\usart.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\CMSIS\system_stm32f1xx.pbi
 
-build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part3.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_adc.pbi |  $
+build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part3.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal.pbi |  $
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_adc.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_adc_ex.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_can.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_cortex.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_dma.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_exti.pbi
-  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part3.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_adc.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_adc_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_can.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_cortex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_dma.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_exti.pbi
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_dma.pbi
+  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part3.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_adc.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_adc_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_can.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_cortex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_dma.pbi
 
-build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part4.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_flash.pbi |  $
+build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part4.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_exti.pbi |  $
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_flash.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_flash_ex.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_gpio.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_gpio_ex.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_i2c.pbi $
-C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_pwr.pbi
-  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part4.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_flash.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_flash_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_gpio.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_gpio_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_i2c.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_pwr.pbi
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_i2c.pbi
+  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part4.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_exti.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_flash.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_flash_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_gpio.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_gpio_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_i2c.pbi
 
-build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part5.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_rcc.pbi |  $
+build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part5.pbi : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_pwr.pbi |  $
+C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_rcc.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_rcc_ex.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_tim.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_tim_ex.pbi $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_uart.pbi
-  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part5.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_rcc.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_rcc_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_tim.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_tim_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_uart.pbi
+  flags = -M C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part5.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_pwr.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_rcc.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_rcc_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_tim.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_tim_ex.pbi C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\Drivers\STM32F1xx_HAL_Driver\stm32f1xx_hal_uart.pbi
 
 build C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj.pbd : PDBLINK C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part0.pbi |  $
 C$:\pjt_not\AS6H_prj\EWARM\AS6H_prj\BrowseInfo\AS6H_prj_part1.pbi $

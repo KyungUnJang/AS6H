@@ -262,46 +262,27 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
   CanRxMsg CanRxData;
   HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rxHeader, CanRxData.Data);
 
-  if(rxHeader.IDE == CAN_ID_STD)	/* ����/���� Driver */
+  if(rxHeader.IDE == CAN_ID_STD)	/*  Driver */
   {
     
-    if((rxHeader.StdId == 0x707)&& (rxHeader.DLC == 1))		/* ���� Driver */
+    if((rxHeader.StdId == 0x707)&& (rxHeader.DLC == 1))		/*  Driver */
     {
-      uCommStatusFlag |= f_canSTR707In;
+      
     }
-    if((rxHeader.StdId == 0x160)&& (rxHeader.DLC == 8))	/* ���� Driver */
+    if((rxHeader.StdId == 0x160)&& (rxHeader.DLC == 8))	/*  Driver */
     {
-      uCommStatusFlag |= f_canDRV160In;
+      
     }
 
     if((rxHeader.StdId == 0x123)&&(rxHeader.DLC == 2))
     {
-       
-      #if 0
-      CAN_RxData[0] = CanRxData.Data[0];	
-      CAN_RxData[1] = CanRxData.Data[1];	
-      uCommStatusFlag |= f_canDTIn;
-
-      
-      Received_canID = rxHeader.StdId;
-      Received_canIDType = rxHeader.IDE;
-      Received_canDLC = rxHeader.DLC;
-      ++CAN_RcvCount;
-      //
-      canDTIntime = 2000; 		/* nck-1222 */
-      
-      #endif 
-
 
     }
   }
  
   if((rxHeader.ExtId == 0x100)&&(rxHeader.IDE == CAN_ID_EXT)&&(rxHeader.DLC == 8))
 	{
-    #if 0
-		CAN_RxData[0] = CanRxData.Data[4];	
-		CAN_RxData[1] = CanRxData.Data[6];	
-    #endif 
+    
     if ( CanRxData.Data[3] < 30 )
     {
       Drv_spd = 0;
@@ -335,7 +316,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 		Received_canIDType = rxHeader.IDE;
 		Received_canDLC = rxHeader.DLC;
 		
-		//uCommStatusFlag |= f_canDTIn;
+		
 	}
   /* USER CODE END USB_LP_CAN1_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan);

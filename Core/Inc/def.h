@@ -88,45 +88,7 @@
 #define FLASH_MAGIC_NUMBER      0x5555AAAA
 
 
-typedef struct
-{
-  uint32_t magic_number;
 
-  //-- fw info
-  //
-  uint32_t addr_tag;
-  uint32_t addr_fw;
-  uint32_t size_tag;
-
-
-  //-- tag info
-  //
-  uint32_t tag_flash_type;
-  uint32_t tag_flash_start;
-  uint32_t tag_flash_end;
-  uint32_t tag_flash_length;
-  uint32_t tag_flash_crc;
-  uint32_t tag_length;
-  uint8_t  tag_date_str[32];
-  uint8_t  tag_time_str[32];
-
-} firm_tag_t;
-
-
-
-
-typedef struct 
-{
-	uint8_t Motor_type;
-	uint8_t Sensor_type;
-	uint8_t Remote_type;
-	uint8_t Battery_type;
-	uint8_t IDLE_SPD;
-	uint8_t ATD_LOW_SPD;
-	uint8_t ATD_HIGH_SPD;
-  uint8_t Spray_type;
-  uint8_t rtk_type;
-} init_setting;
 
 
 
